@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stamp System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>🏷️ Stamps</h1>
+    <input id="search" type="search" placeholder="🔍 Search stamps…" aria-label="Search">
+    <button id="export-md" title="Export Markdown">⬇️ Markdown</button>
+    <button id="export-json" title="Export JSON">⬇️ JSON</button>
+  </header>
+  <div class="layout">
+    <aside>
+      <h2>Templates</h2>
+      <ul id="templates"></ul>
+      <form id="template-form">
+        <h3 id="template-form-title">➕ New template</h3>
+        <input name="name" placeholder="Name" required>
+        <div class="row">
+          <input name="icon" placeholder="Icon" maxlength="4" aria-label="Icon">
+          <input name="color" type="color" value="#546e7a" aria-label="Color">
+        </div>
+        <input name="description" placeholder="Description">
+        <input name="defaultNote" placeholder="Default note">
+        <div class="preview" id="preview"></div>
+        <div class="row"><button type="submit">💾 Save</button><button type="button" id="template-cancel" hidden>Cancel</button></div>
+      </form>
+    </aside>
+    <main>
+      <form id="apply-form">
+        <h2 id="apply-title">Quick apply</h2>
+        <div class="row wrap">
+          <select name="templateId" aria-label="Stamp template" required></select>
+          <input name="target" placeholder="Target (file, task, link…)" required>
+        </div>
+        <textarea name="note" rows="2" placeholder="Note"></textarea>
+        <div class="row wrap">
+          <input name="evidenceUrls" placeholder="Evidence URLs (comma separated)">
+          <input name="tags" placeholder="Tags (comma separated)">
+        </div>
+        <div class="row"><button type="submit">🏷️ Apply</button><button type="button" id="apply-cancel" hidden>Cancel</button></div>
+      </form>
+      <form id="filters" class="row wrap">
+        <span aria-hidden="true">⏳ Filter</span>
+        <select name="templateId" aria-label="Filter by stamp"></select>
+        <input name="tag" placeholder="Tag" aria-label="Filter by tag">
+        <input name="target" placeholder="Target" aria-label="Filter by target">
+        <input name="from" type="date" aria-label="From date">
+        <input name="to" type="date" aria-label="To date">
+        <button type="reset">Clear</button>
+      </form>
+      <ol id="timeline"></ol>
+      <p id="error" role="alert"></p>
+    </main>
+  </div>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
